@@ -153,7 +153,7 @@ function validate(el)
 	}
 
    
-	if($('#cert').val().trim() == '')
+	if($('#cert').val().trim().toLowerCase() == '')
 	{
 		$('#errorRw').find('ul').append('<li>Vehicle Certificate cannot be blank</li>')
 		failed = true;
