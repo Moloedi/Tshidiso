@@ -56,16 +56,25 @@ function showEditTbl(el)
 	{
 		reg = 'undefined'
 	}
+
+	var vehcert = $(el).siblings('.carCert').html()
+	if(vehcert == '&lt;<i>vehicleCertificate</i>&gt;')
+	{
+		vehcert = 'undefined'
+	}
+
 	$('#vin').val(vin);
 	$('#make').val(make);
 	$('#model').val(model);
 	$('#colour').val(colour);
 	$('#reg').val(reg);
+	$('#cert').val(vehcert);
 	
 	$('#hidVin').val(vin);
 	$('#hidMake').val(make);
 	$('#hidModel').val(model);
 	$('#hidColour').val(colour);
+	$('#hidVehiclecert').val(vehcert);
 	$('#hidReg').val(reg.toUpperCase());
 }
 
@@ -142,10 +151,23 @@ function validate(el)
 		$('#errorRw').find('ul').append('<li>Registration cannot be reset to undefined</li>')
 		failed = true;
 	}
+
+   
+	if($('#cert').val().trim() == '')
+	{
+		$('#errorRw').find('ul').append('<li>Vehicle Certificate cannot be blank</li>')
+		failed = true;
+	}
+	if($('#cert').val().trim().toLowerCase() == 'undefined' && $('#hidVehiclecert').val().trim().toLowerCase() != 'undefined')
+	{
+		$('#errorRw').find('ul').append('<li>Vehicle Certificate cannot be reset to undefined</li>')
+		failed = true;
+	}
+
 	if(!failed)
 	{
 		$('#errorRw').hide();
-		updateAsset($('#vin').val().trim(), $('#make').val().trim(), $('#model').val().trim(), $('#colour').val().trim(), $('#reg').val().trim().toUpperCase(), $('#v5cID').val(), el)
+		updateAsset($('#vin').val().trim(), $('#make').val().trim(), $('#model').val().trim(), $('#colour').val().trim(), $('#reg').val().trim().toUpperCase(), $('#v5cID').val(),$('#cert').val().trim(), el)
 	}
 	else
 	{

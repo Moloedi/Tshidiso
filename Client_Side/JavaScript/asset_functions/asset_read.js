@@ -147,7 +147,8 @@ function loadUpdateAssets()
 				if(data.model.toLowerCase() == 'undefined' || data.model.trim() == '') data.model = '&lt;<i>model</i>&gt;';
 				if(data.reg.toLowerCase() == 'undefined' || data.reg.trim() == '') data.reg = '&lt;<i>ownershipDate</i>&gt;';
 				if(data.colour.toLowerCase() == 'undefined' || data.colour.trim() == '') data.colour = '&lt;<i>colour</i>&gt;';
-				$('<tr class="foundCars" ><td class="smlBrk"></td><td class="editRw" ><span class="carID">'+data.v5cID+'</span></td><td class="editRw" colspan="2" >[<span class="carVin">'+data.VIN+'</span>] <span class="carMake">'+data.make+'</span>, <span class="carModel">'+data.model+'</span>, <span class="carColour">'+data.colour+'</span>, <span class="carReg">'+data.reg+'</span><img src="Icons/Manufacturer/edit.svg" onclick="showEditTbl(this)" class="rtBtn" width="20" height="20" /></td><td class="smlBrk" ></td></tr>').insertAfter('#insAft');
+				if(data.vehiclecert.toLowerCase() == 'undefined' || data.vehiclecert.trim() == '')data.vehiclecert = '&lt;<i>vehicleCertificate</i>&gt;';
+				$('<tr class="foundCars" ><td class="smlBrk"></td><td class="editRw" ><span class="carID">'+data.v5cID+'</span></td><td class="editRw" colspan="2" >[<span class="carVin">'+data.VIN+'</span>] <span class="carMake">'+data.make+'</span>, <span class="carModel">'+data.model+'</span>, <span class="carColour">'+data.colour+'</span>, <span class="carReg">'+data.reg+'</span>, <span class="carCert">'+data.vehiclecert+'</span><img src="Icons/Manufacturer/edit.svg" onclick="showEditTbl(this)" class="rtBtn" width="20" height="20" /></td><td class="smlBrk" ></td></tr>').insertAfter('#insAft');
 			}
 		}
 	}
