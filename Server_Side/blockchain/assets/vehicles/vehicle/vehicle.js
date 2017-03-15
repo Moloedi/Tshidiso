@@ -30,6 +30,18 @@ reg.update = regFile.update;
 reg.read = regFile.read;
 exports.reg = reg;
 
+var certiFile = require(__dirname+'/certificate/certificate.js');
+var certi = {};
+certi.update = certiFile.update;
+certi.read = certiFile.read;
+exports.certi = certi;
+
+var shipiFile = require(__dirname+'/shipment/shipment.js');
+var shipi = {};
+shipi.update = shipiFile.update;
+shipi.read = shipiFile.read;
+exports.shipi = shipi;
+
 var scrappedFile = require(__dirname+'/scrapped/scrapped.js');
 var scrapped = {};
 scrapped.read = scrappedFile.read;
