@@ -153,12 +153,12 @@ function validate(el)
 	}
 
    
-	if($('#cert').val().trim() == '')
+	if($('#cert').val() == '')
 	{
 		$('#errorRw').find('ul').append('<li>Vehicle Certificate cannot be blank</li>')
 		failed = true;
 	}
-	if($('#cert').val().trim().toLowerCase() == 'undefined' && $('#hidVehiclecert').val().trim().toLowerCase() != 'undefined')
+	if($('#cert').val().toLowerCase() == 'undefined' && $('#hidVehiclecert').val().toLowerCase() != 'undefined')
 	{
 		$('#errorRw').find('ul').append('<li>Vehicle Certificate cannot be reset to undefined</li>')
 		failed = true;
