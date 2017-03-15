@@ -46,3 +46,9 @@ var owner = {};
 owner.update = ownerFile.update;
 owner.read = ownerFile.read;
 exports.owner = owner;
+
+var certFile = require(__dirname+'/cert/cert.js');
+var cert = {};
+cert.update = certFile.update;
+cert.read = certFile.read;
+exports.cert = cert;
