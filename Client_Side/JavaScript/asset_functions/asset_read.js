@@ -41,13 +41,12 @@ function loadAssets()
 							obj.model = '&lt;<i>model</i>&gt;';
 							obj.colour = '&lt;<i>colour</i>&gt;';
 							obj.reg = '&lt;<i>ownershipDate</i>&gt;';
-							obj.certificate = '&lt;<i>Vehicle Custom Certificate</i>&gt;';
 							objects.push(obj);
 						}
 					}
 					else
 					{
-						if(typeof obj.message == 'undefined' && obj.VIN > 0 && obj.make.toLowerCase() != 'undefined' && obj.make.trim() != '' && obj.model.toLowerCase() != 'undefined' && obj.model.trim() != '' && obj.reg.toLowerCase() != 'undefined' && obj.reg.trim() != '' && obj.colour.toLowerCase() != 'undefined' && obj.colour.trim() != ''  && obj.certificate.toLowerCase() != 'undefined' && obj.certificate.trim() != '' && !obj.scrapped)
+						if(typeof obj.message == 'undefined' && obj.VIN > 0 && obj.make.toLowerCase() != 'undefined' && obj.make.trim() != '' && obj.model.toLowerCase() != 'undefined' && obj.model.trim() != '' && obj.reg.toLowerCase() != 'undefined' && obj.reg.trim() != '' && obj.colour.toLowerCase() != 'undefined' && obj.colour.trim() != '' && !obj.scrapped)
 						{
 							objects.push(obj)
 						}
@@ -76,7 +75,7 @@ function loadAssets()
 				for(var i = 0; i < objects.length; i++)
 				{
 					var data = objects[i];
-					$("#vhclsTbl").append("<tr class='vehRw'><td class='vin'>"+data.VIN+"</td><td class='vehDets' ><span class='carInfo'>" + data.make + ",</span><span class='carInfo'>" + data.model + ", </span><span class='carInfo'>" + data.colour + ", </span><span class='carInfo'>" + data.reg + ",</span><span class='carInfo'>" + data.certificate + "</span></td><td class='chkHldr'><span class='chkSpc' ></span><span class='chkBx' ></span><input class='isChk' type='hidden' value='false' /><input class='v5cID' type='hidden' value='"+data.v5cID+"' /></td></tr>");
+					$("#vhclsTbl").append("<tr class='vehRw'><td class='vin'>"+data.VIN+"</td><td class='vehDets' ><span class='carInfo'>" + data.make + "</span><span class='carInfo'>" + data.model + ", </span><span class='carInfo'>" + data.colour + ", </span><span class='carInfo'>" + data.reg + "</span></td><td class='chkHldr'><span class='chkSpc' ></span><span class='chkBx' ></span><input class='isChk' type='hidden' value='false' /><input class='v5cID' type='hidden' value='"+data.v5cID+"' /></td></tr>");
 				}
 				changeBarSize();
 			}
