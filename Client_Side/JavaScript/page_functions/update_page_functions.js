@@ -56,33 +56,17 @@ function showEditTbl(el)
 	{
 		reg = 'undefined'
 	}
-
-	var cert = $(el).siblings('.carCert').html()
-	if(cert == '&lt;<i>certificate</i>&gt;')
-	{
-		cert = 'undefined'
-	}
-	var ship = $(el).siblings('.carShip').html()
-	if(ship == '&lt;<i>shipment</i>&gt;')
-	{
-		ship = 'undefined'
-	}
 	$('#vin').val(vin);
 	$('#make').val(make);
 	$('#model').val(model);
 	$('#colour').val(colour);
 	$('#reg').val(reg);
-	$('#cert').val(cert);
-	$('#ship').val(ship);
-	
 	
 	$('#hidVin').val(vin);
 	$('#hidMake').val(make);
 	$('#hidModel').val(model);
 	$('#hidColour').val(colour);
 	$('#hidReg').val(reg.toUpperCase());
-	$('#hidCertificate').val(cert);
-	$('#hidShipment').val(ship);
 }
 
 function closeEditTbl()
@@ -158,35 +142,10 @@ function validate(el)
 		$('#errorRw').find('ul').append('<li>Registration cannot be reset to undefined</li>')
 		failed = true;
 	}
-
-
-	if($('#cert').val().trim() == '')
-	{
-		$('#errorRw').find('ul').append('<li>Certificate cannot be blank</li>')
-		failed = true;
-	}
-	if($('#cert').val().trim().toLowerCase() == 'undefined' && $('#hidCertificate').val().trim().toLowerCase() != 'undefined')
-	{
-		$('#errorRw').find('ul').append('<li>Certificate cannot be reset to undefined</li>')
-		failed = true;
-	}
-
-
-	if($('#ship').val().trim() == '')
-	{
-		$('#errorRw').find('ul').append('<li>Shipment cannot be blank</li>')
-		failed = true;
-	}
-	if($('#ship').val().trim().toLowerCase() == 'undefined' && $('#hidShipment').val().trim().toLowerCase() != 'undefined')
-	{
-		$('#errorRw').find('ul').append('<li>Shipment cannot be reset to undefined</li>')
-		failed = true;
-	}
-
 	if(!failed)
 	{
 		$('#errorRw').hide();
-		updateAsset($('#vin').val().trim(), $('#make').val().trim(), $('#model').val().trim(), $('#colour').val().trim(), $('#reg').val().trim().toUpperCase(), $('#v5cID').val(), $('#cert').val().trim(),$('#ship').val().trim(), el)
+		updateAsset($('#vin').val().trim(), $('#make').val().trim(), $('#model').val().trim(), $('#colour').val().trim(), $('#reg').val().trim().toUpperCase(), $('#v5cID').val(), el)
 	}
 	else
 	{
