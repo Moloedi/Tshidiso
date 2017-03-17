@@ -58,6 +58,8 @@ type Vehicle struct {
 	Colour          string `json:"colour"`
 	V5cID           string `json:"v5cID"`
 	LeaseContractID string `json:"leaseContractID"`
+
+	Certificate		string `json:"certificate"`
 }
 
 
