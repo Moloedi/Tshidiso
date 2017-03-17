@@ -56,16 +56,23 @@ function showEditTbl(el)
 	{
 		reg = 'undefined'
 	}
+	var certificate = $(el).siblings('.carReg').html()
+	if(certificate == '&lt;<i>certificate</i>&gt;')
+	{
+		certificate = 'undefined'
+	}
 	$('#vin').val(vin);
 	$('#make').val(make);
 	$('#model').val(model);
 	$('#colour').val(colour);
 	$('#reg').val(reg);
+	$('#certificate').val(certificate);
 	
 	$('#hidVin').val(vin);
 	$('#hidMake').val(make);
 	$('#hidModel').val(model);
 	$('#hidColour').val(colour);
+	$('#hidCertificate').val(certificate);
 	$('#hidReg').val(reg.toUpperCase());
 }
 
@@ -145,7 +152,7 @@ function validate(el)
 	if(!failed)
 	{
 		$('#errorRw').hide();
-		updateAsset($('#vin').val().trim(), $('#make').val().trim(), $('#model').val().trim(), $('#colour').val().trim(), $('#reg').val().trim().toUpperCase(), $('#v5cID').val(), el)
+		updateAsset($('#vin').val().trim(), $('#make').val().trim(), $('#model').val().trim(), $('#colour').val().trim(), $('#reg').val().trim().toUpperCase(), $('#v5cID').val(),$('#certificate').val().trim(), el)
 	}
 	else
 	{
