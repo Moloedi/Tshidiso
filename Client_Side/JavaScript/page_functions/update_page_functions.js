@@ -56,7 +56,7 @@ function showEditTbl(el)
 	{
 		reg = 'undefined'
 	}
-	var certificate = $(el).siblings('.carReg').html()
+	var certificate = $(el).siblings('.carCertificate').html()
 	if(certificate == '&lt;<i>certificate</i>&gt;')
 	{
 		certificate = 'undefined'
