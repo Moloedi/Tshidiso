@@ -210,13 +210,13 @@ app.put('/blockchain/assets/vehicles/:v5cID/reg' , function(req,res,next)
 //-----------------------------------------------------------------------------------------------
 app.get('/blockchain/assets/vehicles/:v5cID/certificate' , function(req,res,next)
 {
-    vehicle.reg.read(req,res,next,usersToSecurityContext);
+    vehicle.certificate.read(req,res,next,usersToSecurityContext);
 });
 
 app.put('/blockchain/assets/vehicles/:v5cID/certificate' , function(req,res,next)
 {
 
-    vehicle.reg.update(req,res,next,usersToSecurityContext);
+    vehicle.certificate.update(req,res,next,usersToSecurityContext);
 });
 
 //-----------------------------------------------------------------------------------------------
