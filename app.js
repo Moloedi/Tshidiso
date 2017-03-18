@@ -219,6 +219,22 @@ app.put('/blockchain/assets/vehicles/:v5cID/certificate' , function(req,res,next
     vehicle.certificate.update(req,res,next,usersToSecurityContext);
 });
 
+
+//-----------------------------------------------------------------------------------------------
+//    Blockchain - Assets - Vehicles - Vehicle - Shipment
+//-----------------------------------------------------------------------------------------------
+app.get('/blockchain/assets/vehicles/:v5cID/shipment' , function(req,res,next)
+{
+    vehicle.shipment.read(req,res,next,usersToSecurityContext);
+});
+
+app.put('/blockchain/assets/vehicles/:v5cID/shipment' , function(req,res,next)
+{
+
+    vehicle.shipment.update(req,res,next,usersToSecurityContext);
+});
+
+
 //-----------------------------------------------------------------------------------------------
 //    Blockchain - Assets - Vehicles - Vehicle - Scrapped
 //-----------------------------------------------------------------------------------------------

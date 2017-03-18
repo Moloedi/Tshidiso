@@ -60,6 +60,7 @@ type Vehicle struct {
 	LeaseContractID string `json:"leaseContractID"`
 
 	Certificate		string `json:"certificate"`
+	Shipment		string `json:"shipment"`
 }
 
 
@@ -264,6 +265,7 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function stri
 		} else if function == "update_model"        { return t.update_model(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "update_reg" 			{ return t.update_registration(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "update_certificate" 	{ return t.update_certificate(stub, v, caller, caller_affiliation, args[0])
+		} else if function == "update_shipment" 	{ return t.update_shipment(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "update_vin" 			{ return t.update_vin(stub, v, caller, caller_affiliation, args[0])
         } else if function == "update_colour" 		{ return t.update_colour(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "scrap_vehicle" 		{ return t.scrap_vehicle(stub, v, caller, caller_affiliation) }
@@ -329,11 +331,12 @@ func (t *SimpleChaincode) create_vehicle(stub shim.ChaincodeStubInterface, calle
 	owner          := "\"Owner\":\""+caller+"\", "
 	colour         := "\"Colour\":\"UNDEFINED\", "
 	leaseContract  := "\"LeaseContractID\":\"UNDEFINED\", "
-	certificate   := "\"Certificate\":\"UNDEFINED\", "
+	certificate    := "\"Certificate\":\"UNDEFINED\", "
+	shipment	   := "\"Shipment\":\"UNDEFINED\", "
 	status         := "\"Status\":0, "
 	scrapped       := "\"Scrapped\":false"
 
-	vehicle_json := "{"+v5c_ID+vin+make+model+reg+owner+colour+leaseContract+status+certificate+scrapped+"}" 	// Concatenates the variables to create the total JSON object
+	vehicle_json := "{"+v5c_ID+vin+make+model+reg+owner+colour+leaseContract+status+certificate+shipment+scrapped+"}" 	// Concatenates the variables to create the total JSON object
 
 	matched, err := regexp.Match("^[A-z][A-z][0-9]{7}", []byte(v5cID))  				// matched = true if the v5cID passed fits format of two letters followed by seven digits
 
@@ -424,10 +427,12 @@ func (t *SimpleChaincode) authority_to_manufacturer(stub shim.ChaincodeStubInter
 //=================================================================================================================================
 func (t *SimpleChaincode) manufacturer_to_private(stub shim.ChaincodeStubInterface, v Vehicle, caller string, caller_affiliation string, recipient_name string, recipient_affiliation string) ([]byte, error) {
 
-	if 		v.Make 	 == "UNDEFINED" ||
-			v.Model  == "UNDEFINED" ||
-			v.Reg 	 == "UNDEFINED" ||
-			v.Colour == "UNDEFINED" ||
+	if 		v.Make 	      == "UNDEFINED" ||
+			v.Model       == "UNDEFINED" ||
+			v.Reg 	      == "UNDEFINED" ||
+			v.Colour      == "UNDEFINED" ||
+			v.Certificate == "UNDEFINED" ||
+			v.Shipment    == "UNDEFINED" ||
 			v.VIN == 0				{					//If any part of the car is undefined it has not bene fully manufacturered so cannot be sent
 															fmt.Printf("MANUFACTURER_TO_PRIVATE: Car not fully defined")
 															return nil, errors.New(fmt.Sprintf("Car not fully defined. %v", v))
@@ -700,13 +705,39 @@ func (t *SimpleChaincode) update_certificate(stub shim.ChaincodeStubInterface, v
 					v.Certificate = new_value
 
 	} else {
-        return nil, errors.New(fmt.Sprint("Permission denied. update_model %t %t %t" + v.Owner == caller, caller_affiliation == MANUFACTURER, v.Scrapped))
+        return nil, errors.New(fmt.Sprint("Permission denied. update_certificate %t %t %t" + v.Owner == caller, caller_affiliation == MANUFACTURER, v.Scrapped))
 
 	}
 
 	_, err := t.save_changes(stub, v)
 
-															if err != nil { fmt.Printf("UPDATE_MODEL: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }
+															if err != nil { fmt.Printf("update_certificate: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }
+
+	return nil, nil
+
+}
+
+
+//=================================================================================================================================
+//	 update_shipment
+//=================================================================================================================================
+func (t *SimpleChaincode) update_shipment(stub shim.ChaincodeStubInterface, v Vehicle, caller string, caller_affiliation string, new_value string) ([]byte, error) {
+
+	if 		v.Status			== STATE_MANUFACTURE	&&
+			v.Owner				== caller				&&
+			caller_affiliation	== MANUFACTURER			&&
+			v.Scrapped			== false				{
+
+					v.Shipment = new_value
+
+	} else {
+        return nil, errors.New(fmt.Sprint("Permission denied. update_shipment %t %t %t" + v.Owner == caller, caller_affiliation == MANUFACTURER, v.Scrapped))
+
+	}
+
+	_, err := t.save_changes(stub, v)
+
+															if err != nil { fmt.Printf("UPDATE_SHIPMENT: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }
 
 	return nil, nil
 
