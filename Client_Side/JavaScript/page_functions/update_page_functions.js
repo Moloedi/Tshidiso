@@ -149,6 +149,16 @@ function validate(el)
 		$('#errorRw').find('ul').append('<li>Registration cannot be reset to undefined</li>')
 		failed = true;
 	}
+	if($('#certificate').val().trim() == '')
+	{
+		$('#errorRw').find('ul').append('<li>Certificate cannot be blank</li>')
+		failed = true;
+	}
+	if($('#certificate').val().trim().toLowerCase() == 'undefined' && $('#hidCertificate').val().trim().toLowerCase() != 'undefined')
+	{
+		$('#errorRw').find('ul').append('<li>Certificate cannot be reset to undefined</li>')
+		failed = true;
+	}
 	if(!failed)
 	{
 		$('#errorRw').hide();
