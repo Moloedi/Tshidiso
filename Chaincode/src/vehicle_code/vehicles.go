@@ -328,10 +328,11 @@ func (t *SimpleChaincode) create_vehicle(stub shim.ChaincodeStubInterface, calle
 	owner          := "\"Owner\":\""+caller+"\", "
 	colour         := "\"Colour\":\"UNDEFINED\", "
 	leaseContract  := "\"LeaseContractID\":\"UNDEFINED\", "
+	certificates   := "\"Certificate\":\"UNDEFINED\", "
 	status         := "\"Status\":0, "
 	scrapped       := "\"Scrapped\":false"
 
-	vehicle_json := "{"+v5c_ID+vin+make+model+reg+owner+colour+leaseContract+status+scrapped+"}" 	// Concatenates the variables to create the total JSON object
+	vehicle_json := "{"+v5c_ID+vin+make+model+reg+owner+colour+leaseContract+status+scrapped+certificates+"}" 	// Concatenates the variables to create the total JSON object
 
 	matched, err := regexp.Match("^[A-z][A-z][0-9]{7}", []byte(v5cID))  				// matched = true if the v5cID passed fits format of two letters followed by seven digits
 
@@ -422,10 +423,11 @@ func (t *SimpleChaincode) authority_to_manufacturer(stub shim.ChaincodeStubInter
 //=================================================================================================================================
 func (t *SimpleChaincode) manufacturer_to_private(stub shim.ChaincodeStubInterface, v Vehicle, caller string, caller_affiliation string, recipient_name string, recipient_affiliation string) ([]byte, error) {
 
-	if 		v.Make 	 == "UNDEFINED" ||
-			v.Model  == "UNDEFINED" ||
-			v.Reg 	 == "UNDEFINED" ||
-			v.Colour == "UNDEFINED" ||
+	if 		v.Make 	 	  == "UNDEFINED" ||
+			v.Model		  == "UNDEFINED" ||
+			v.Reg 	 	  == "UNDEFINED" ||
+			v.Colour 	  == "UNDEFINED" ||
+			v.Certificate == "UNDEFINED" ||
 			v.VIN == 0				{					//If any part of the car is undefined it has not bene fully manufacturered so cannot be sent
 															fmt.Printf("MANUFACTURER_TO_PRIVATE: Car not fully defined")
 															return nil, errors.New(fmt.Sprintf("Car not fully defined. %v", v))
