@@ -41,6 +41,13 @@ VIN.update = VINFile.update;
 VIN.read = VINFile.read;
 exports.VIN = VIN;
 
+
+var certFile = require(__dirname+'/certificate/certificate.js');
+var certificate = {};
+certificate.update = certFile.update;
+certificate.read = certFile.read;
+exports.certificate = certificate;
+
 var ownerFile = require(__dirname+'/owner/owner.js');
 var owner = {};
 owner.update = ownerFile.update;
