@@ -211,6 +211,12 @@ function getTransactions(){
 						function_name = "update_colour";
 						update_type = "Colour";
 					}
+					if(payload.indexOf("update_certificate") != -1)
+					{
+						type = "Update";
+						function_name = "update_certificate";
+						update_type = "Certificate";
+					}
 					if(payload.indexOf("scrap_vehicle") != -1)
 					{
 						type = "Scrap";
@@ -241,7 +247,8 @@ function getTransactions(){
 						var model = get_update("model", v5cID);
 						var reg = get_update("registration", v5cID);
 						var colour = get_update("colour", v5cID);
-						var carDetails = '['+vin+'] '+make+' '+model+', '+reg+', '+colour
+						var certificate = get_update("certificate",v5cID);
+						var carDetails = '['+vin+'] '+make+' '+model+', '+reg+', '+colour+', '+certificate
 						
 						if(carDetails.indexOf('undefined') != -1)
 						{

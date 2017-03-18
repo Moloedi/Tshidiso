@@ -204,6 +204,21 @@ app.put('/blockchain/assets/vehicles/:v5cID/reg' , function(req,res,next)
     vehicle.reg.update(req,res,next,usersToSecurityContext);
 });
 
+
+//-----------------------------------------------------------------------------------------------
+//    Blockchain - Assets - Vehicles - Vehicle - Certificate
+//-----------------------------------------------------------------------------------------------
+app.get('/blockchain/assets/vehicles/:v5cID/certificate' , function(req,res,next)
+{
+    vehicle.reg.read(req,res,next,usersToSecurityContext);
+});
+
+app.put('/blockchain/assets/vehicles/:v5cID/certificate' , function(req,res,next)
+{
+
+    vehicle.reg.update(req,res,next,usersToSecurityContext);
+});
+
 //-----------------------------------------------------------------------------------------------
 //    Blockchain - Assets - Vehicles - Vehicle - Scrapped
 //-----------------------------------------------------------------------------------------------
