@@ -274,7 +274,7 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function stri
 		} else if function == "update_shipment" 	{ return t.update_shipment(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "update_vin" 			{ return t.update_vin(stub, v, caller, caller_affiliation, args[0])
         } else if function == "update_colour" 		{ return t.update_colour(stub, v, caller, caller_affiliation, args[0])
-		} else if function == "scrap_vehicle" 		{ return t.scrap_vehicle(stub, v, caller, caller_affiliation) }
+		} else if function == "scrap_vehicle" 		{ return t.scrap_vehicle(stub, v, caller, caller_affiliation) 
 		} else if function == "update_licence"	 	{ return t.update_licence(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "update_emirates"	 	{ return t.update_emirates(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "update_passport"	 	{ return t.update_passport(stub, v, caller, caller_affiliation, args[0])
