@@ -66,6 +66,31 @@ function showEditTbl(el)
 	{
 		shipment = 'undefined'
 	}
+	var license = $(el).siblings('.carLicense').html()
+	if(license == '&lt;<i>license</i>&gt;')
+	{
+		license = 'undefined'
+	}
+	var emirates = $(el).siblings('.carEmirates').html()
+	if(emirates == '&lt;<i>emirates</i>&gt;')
+	{
+		emirates = 'undefined'
+	}
+	var passport = $(el).siblings('.carPassport').html()
+	if(passport == '&lt;<i>passport</i>&gt;')
+	{
+		passport = 'undefined'
+	}
+	var telephone = $(el).siblings('.carTelephone').html()
+	if(telephone == '&lt;<i>telephone</i>&gt;')
+	{
+		telephone = 'undefined'
+	}
+	var addresses = $(el).siblings('.carAddresses').html()
+	if(addresses == '&lt;<i>addresses</i>&gt;')
+	{
+		addresses = 'undefined'
+	}
 	$('#vin').val(vin);
 	$('#make').val(make);
 	$('#model').val(model);
@@ -73,6 +98,11 @@ function showEditTbl(el)
 	$('#reg').val(reg);
 	$('#certificate').val(certificate);
 	$('#shipment').val(shipment);
+	$('#license').val(license);
+	$('#emirates').val(emirates);
+	$('#passport').val(passport);
+	$('#telephone').val(telephone);
+	$('#addresses').val(addresses);
 	
 	$('#hidVin').val(vin);
 	$('#hidMake').val(make);
@@ -80,6 +110,11 @@ function showEditTbl(el)
 	$('#hidColour').val(colour);
 	$('#hidCertificate').val(certificate);
 	$('#hidShipment').val(shipment);
+	$('#hidLicense').val(license);
+	$('#hidEmirates').val(emirates);
+	$('#hidPassport').val(passport);
+	$('#hidTelephone').val(telephone);
+	$('#hidAddresses').val(addresses);
 	$('#hidReg').val(reg.toUpperCase());
 }
 
@@ -174,6 +209,56 @@ function validate(el)
 	if($('#shipment').val().trim().toLowerCase() == 'undefined' && $('#hidShipment').val().trim().toLowerCase() != 'undefined')
 	{
 		$('#errorRw').find('ul').append('<li>Shipment Company cannot be reset to undefined</li>')
+		failed = true;
+	}
+	if($('#license').val().trim() == '')
+	{
+		$('#errorRw').find('ul').append('<li>License Number cannot be blank</li>')
+		failed = true;
+	}
+	if($('#license').val().trim().toLowerCase() == 'undefined' && $('#hidLicence').val().trim().toLowerCase() != 'undefined')
+	{
+		$('#errorRw').find('ul').append('<li>License Number cannot be reset to undefined</li>')
+		failed = true;
+	}
+	if($('#emirates').val().trim() == '')
+	{
+		$('#errorRw').find('ul').append('<li>Emirates ID cannot be blank</li>')
+		failed = true;
+	}
+	if($('#emirates').val().trim().toLowerCase() == 'undefined' && $('#hidEmirates').val().trim().toLowerCase() != 'undefined')
+	{
+		$('#errorRw').find('ul').append('<li>Emirates ID cannot be reset to undefined</li>')
+		failed = true;
+	}
+	if($('#passport').val().trim() == '')
+	{
+		$('#errorRw').find('ul').append('<li>Passport Number cannot be blank</li>')
+		failed = true;
+	}
+	if($('#passport').val().trim().toLowerCase() == 'undefined' && $('#hidPassport').val().trim().toLowerCase() != 'undefined')
+	{
+		$('#errorRw').find('ul').append('<li>Passport Number cannot be reset to undefined</li>')
+		failed = true;
+	}
+	if($('#telephone').val().trim() == '')
+	{
+		$('#errorRw').find('ul').append('<li>Telephone Number cannot be blank</li>')
+		failed = true;
+	}
+	if($('#telephone').val().trim().toLowerCase() == 'undefined' && $('#hidTelephone').val().trim().toLowerCase() != 'undefined')
+	{
+		$('#errorRw').find('ul').append('<li>Telephone Number cannot be reset to undefined</li>')
+		failed = true;
+	}
+	if($('#addresses').val().trim() == '')
+	{
+		$('#errorRw').find('ul').append('<li>Addresses cannot be blank</li>')
+		failed = true;
+	}
+	if($('#addresses').val().trim().toLowerCase() == 'undefined' && $('#hidAddresses').val().trim().toLowerCase() != 'undefined')
+	{
+		$('#errorRw').find('ul').append('<li>Addresses cannot be reset to undefined</li>')
 		failed = true;
 	}
 	if(!failed)
