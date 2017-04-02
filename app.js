@@ -219,6 +219,22 @@ app.put('/blockchain/assets/vehicles/:v5cID/certificate' , function(req,res,next
     vehicle.certificate.update(req,res,next,usersToSecurityContext);
 });
 
+//-----------------------------------------------------------------------------------------------
+//    Blockchain - Assets - Vehicles - Vehicle - License
+//-----------------------------------------------------------------------------------------------
+app.get('/blockchain/assets/vehicles/:v5cID/license' , function(req,res,next)
+{
+    vehicle.license.read(req,res,next,usersToSecurityContext);
+});
+
+app.put('/blockchain/assets/vehicles/:v5cID/license' , function(req,res,next)
+{
+
+    vehicle.license.update(req,res,next,usersToSecurityContext);
+});
+
+
+
 
 //-----------------------------------------------------------------------------------------------
 //    Blockchain - Assets - Vehicles - Vehicle - Shipment

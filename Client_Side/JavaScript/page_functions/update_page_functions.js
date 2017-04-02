@@ -66,6 +66,11 @@ function showEditTbl(el)
 	{
 		shipment = 'undefined'
 	}
+	var license = $(el).siblings('.carLicense').html()
+	if(license == '&lt;<i>license</i>&gt;')
+	{
+		license = 'undefined'
+	}
 	$('#vin').val(vin);
 	$('#make').val(make);
 	$('#model').val(model);
@@ -73,6 +78,7 @@ function showEditTbl(el)
 	$('#reg').val(reg);
 	$('#certificate').val(certificate);
 	$('#shipment').val(shipment);
+	$('#license').val(license);
 	
 	$('#hidVin').val(vin);
 	$('#hidMake').val(make);
@@ -80,6 +86,7 @@ function showEditTbl(el)
 	$('#hidColour').val(colour);
 	$('#hidCertificate').val(certificate);
 	$('#hidShipment').val(shipment);
+	$('#hidLicense').val(license);
 	$('#hidReg').val(reg.toUpperCase());
 }
 
@@ -176,10 +183,21 @@ function validate(el)
 		$('#errorRw').find('ul').append('<li>Shipment Company cannot be reset to undefined</li>')
 		failed = true;
 	}
+
+	if($('#license').val().trim() == '')
+	{
+		$('#errorRw').find('ul').append('<li>License Number cannot be blank</li>')
+		failed = true;
+	}
+	if($('#license').val().trim().toLowerCase() == 'undefined' && $('#hidLicense').val().trim().toLowerCase() != 'undefined')
+	{
+		$('#errorRw').find('ul').append('<li>License Number cannot be reset to undefined</li>')
+		failed = true;
+	}
 	if(!failed)
 	{
 		$('#errorRw').hide();
-		updateAsset($('#vin').val().trim(), $('#make').val().trim(), $('#model').val().trim(), $('#colour').val().trim(), $('#reg').val().trim().toUpperCase(), $('#v5cID').val(),$('#certificate').val().trim(),$('#shipment').val().trim(), el)
+		updateAsset($('#vin').val().trim(), $('#make').val().trim(), $('#model').val().trim(), $('#colour').val().trim(), $('#reg').val().trim().toUpperCase(), $('#v5cID').val(),$('#certificate').val().trim(),$('#shipment').val().trim(),$('#license').val().trim(), el)
 	}
 	else
 	{

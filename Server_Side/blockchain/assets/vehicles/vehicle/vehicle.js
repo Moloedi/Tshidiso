@@ -48,12 +48,18 @@ certificate.update = certFile.update;
 certificate.read = certFile.read;
 exports.certificate = certificate;
 
-
 var shipFile = require(__dirname+'/shipment/shipment.js');
 var shipment = {};
 shipment.update = shipFile.update;
 shipment.read = shipFile.read;
 exports.shipment = shipment;
+
+var licFile = require(__dirname+'/license/license.js');
+var license = {};
+license.update = licFile.update;
+license.read = licFile.read;
+exports.license = license;
+
 
 var ownerFile = require(__dirname+'/owner/owner.js');
 var owner = {};

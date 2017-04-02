@@ -61,6 +61,7 @@ type Vehicle struct {
 
 	Certificate		string `json:"certificate"`
 	Shipment		string `json:"shipment"`
+	License			string `json:"license"`
 }
 
 
@@ -265,6 +266,7 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function stri
 		} else if function == "update_model"        { return t.update_model(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "update_reg" 			{ return t.update_registration(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "update_certificate" 	{ return t.update_certificate(stub, v, caller, caller_affiliation, args[0])
+		} else if function == "update_license" 		{ return t.update_license(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "update_shipment" 	{ return t.update_shipment(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "update_vin" 			{ return t.update_vin(stub, v, caller, caller_affiliation, args[0])
         } else if function == "update_colour" 		{ return t.update_colour(stub, v, caller, caller_affiliation, args[0])
@@ -333,10 +335,11 @@ func (t *SimpleChaincode) create_vehicle(stub shim.ChaincodeStubInterface, calle
 	leaseContract  := "\"LeaseContractID\":\"UNDEFINED\", "
 	certificate    := "\"Certificate\":\"UNDEFINED\", "
 	shipment	   := "\"Shipment\":\"UNDEFINED\", "
+	license		   := "\"License\":\"UNDEFINED\", "
 	status         := "\"Status\":0, "
 	scrapped       := "\"Scrapped\":false"
 
-	vehicle_json := "{"+v5c_ID+vin+make+model+reg+owner+colour+leaseContract+status+certificate+shipment+scrapped+"}" 	// Concatenates the variables to create the total JSON object
+	vehicle_json := "{"+v5c_ID+vin+make+model+reg+owner+colour+leaseContract+status+certificate+shipment+license+scrapped+"}" 	// Concatenates the variables to create the total JSON object
 
 	matched, err := regexp.Match("^[A-z][A-z][0-9]{7}", []byte(v5cID))  				// matched = true if the v5cID passed fits format of two letters followed by seven digits
 
@@ -433,6 +436,7 @@ func (t *SimpleChaincode) manufacturer_to_private(stub shim.ChaincodeStubInterfa
 			v.Colour      == "UNDEFINED" ||
 			v.Certificate == "UNDEFINED" ||
 			v.Shipment    == "UNDEFINED" ||
+			v.License	  == "UNDEFINED" ||
 			v.VIN == 0				{					//If any part of the car is undefined it has not bene fully manufacturered so cannot be sent
 															fmt.Printf("MANUFACTURER_TO_PRIVATE: Car not fully defined")
 															return nil, errors.New(fmt.Sprintf("Car not fully defined. %v", v))
@@ -712,6 +716,32 @@ func (t *SimpleChaincode) update_certificate(stub shim.ChaincodeStubInterface, v
 	_, err := t.save_changes(stub, v)
 
 															if err != nil { fmt.Printf("update_certificate: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }
+
+	return nil, nil
+
+}
+
+
+//=================================================================================================================================
+//	 update_license
+//=================================================================================================================================
+func (t *SimpleChaincode) update_license(stub shim.ChaincodeStubInterface, v Vehicle, caller string, caller_affiliation string, new_value string) ([]byte, error) {
+
+	if 		v.Status			== STATE_MANUFACTURE	&&
+			v.Owner				== caller				&&
+			caller_affiliation	== MANUFACTURER			&&
+			v.Scrapped			== false				{
+
+					v.License = new_value
+
+	} else {
+        return nil, errors.New(fmt.Sprint("Permission denied. update_license %t %t %t" + v.Owner == caller, caller_affiliation == MANUFACTURER, v.Scrapped))
+
+	}
+
+	_, err := t.save_changes(stub, v)
+
+															if err != nil { fmt.Printf("update_license: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }
 
 	return nil, nil
 

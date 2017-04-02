@@ -223,6 +223,12 @@ function getTransactions(){
 						function_name = "update_shipment";
 						update_type = "Shipment";
 					}
+					if(payload.indexOf("update_license") != -1)
+					{
+						type = "Update";
+						function_name = "update_license";
+						update_type = "License";
+					}
 					if(payload.indexOf("scrap_vehicle") != -1)
 					{
 						type = "Scrap";
@@ -255,7 +261,8 @@ function getTransactions(){
 						var colour = get_update("colour", v5cID);
 						var certificate = get_update("certificate",v5cID);
 						var shipment = get_update("shipment",v5cID);
-						var carDetails = '['+vin+'] '+make+' '+model+', '+reg+', '+colour+', '+certificate+', '+shipment
+						var license = get_update("license",v5cID);
+						var carDetails = '['+vin+'] '+make+' '+model+', '+reg+', '+colour+', '+certificate+', '+shipment+', '+license
 						
 						if(carDetails.indexOf('undefined') != -1)
 						{
