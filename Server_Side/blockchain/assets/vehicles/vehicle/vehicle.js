@@ -55,36 +55,6 @@ shipment.update = shipFile.update;
 shipment.read = shipFile.read;
 exports.shipment = shipment;
 
-var licenseFile = require(__dirname+'/license/license.js');
-var license = {};
-license.update = licenseFile.update;
-license.read = licenseFile.read;
-exports.license = license;
-
-var emiratesFile = require(__dirname+'/emirates/emirates.js');
-var emirates = {};
-emirates.update = emiratesFile.update;
-emirates.read = emiratesFile.read;
-exports.emirates = emirates;
-
-var passportFile = require(__dirname+'/passport/passport.js');
-var passport = {};
-passport.update = passportFile.update;
-passport.read = passportFile.read;
-exports.passport = passport;
-
-var telephoneFile = require(__dirname+'/telephone/telephone.js');
-var telephone = {};
-telephone.update = telephoneFile.update;
-telephone.read = telephoneFile.read;
-exports.telephone = telephone;
-
-var addressesFile = require(__dirname+'/addresses/addresses.js');
-var addresses = {};
-addresses.update = addressesFile.update;
-addresses.read = addressesFile.read;
-exports.addresses = addresses;
-
 var ownerFile = require(__dirname+'/owner/owner.js');
 var owner = {};
 owner.update = ownerFile.update;

@@ -298,7 +298,7 @@ function scrapAsset()
 
 let bigData;
 let increment;
-function updateAsset(vin, make, model, colour, reg, v5cID,certificate,shipment, license, emirates, passport, telephone, addresses, el)
+function updateAsset(vin, make, model, colour, reg, v5cID,certificate,shipment, el)
 {
 	/*
 	Formats the transaction request to update an attribute of a V5C. The logic on who can update what is contained within the contract on the blockchain.
@@ -308,7 +308,7 @@ function updateAsset(vin, make, model, colour, reg, v5cID,certificate,shipment, 
     $('#loaderMessages').html('');
 
 
-    bigData = [{'value':vin,'field':'VIN', 'title': 'VIN','v5cID':v5cID},{'value':make,'field':'make', 'title': 'Make','v5cID':v5cID},{'value':model,'field':'model', 'title': 'Model','v5cID':v5cID},{'value':colour,'field':'colour', 'title': 'Colour','v5cID':v5cID},{'value':reg,'field':'reg', 'title': 'Ownership Date','v5cID':v5cID},{'value':certificate,'field':'certificate', 'title': 'Vehicle Custom Certificate','v5cID':v5cID},{'value':shipment,'field':'shipment', 'title': 'Shipment Company','v5cID':v5cID},{'value':license,'field':'license', 'title': 'License number','v5cID':v5cID}, {'value':emirates,'field':'emirates', 'title': 'Emirates ID','v5cID':v5cID},{'value':passport,'field':'passport', 'title': 'Passport Number','v5cID':v5cID},{'value':telephone,'field':'telephone', 'title': 'Telephone Number','v5cID':v5cID},{'value':addresses,'field':'addresses', 'title': 'Addresses','v5cID':v5cID}];
+    bigData = [{'value':vin,'field':'VIN', 'title': 'VIN','v5cID':v5cID},{'value':make,'field':'make', 'title': 'Make','v5cID':v5cID},{'value':model,'field':'model', 'title': 'Model','v5cID':v5cID},{'value':colour,'field':'colour', 'title': 'Colour','v5cID':v5cID},{'value':reg,'field':'reg', 'title': 'Ownership Date','v5cID':v5cID},{'value':certificate,'field':'certificate', 'title': 'Vehicle Custom Certificate','v5cID':v5cID},{'value':shipment,'field':'shipment', 'title': 'Shipment Company','v5cID':v5cID}];
     increment=0;
 
     for(var i = bigData.length-1; i >= 0; i--)
