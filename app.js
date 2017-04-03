@@ -245,7 +245,7 @@ app.get('/blockchain/assets/vehicles/:v5cID/emirates' , function(req,res,next)
 app.put('/blockchain/assets/vehicles/:v5cID/emirates' , function(req,res,next)
 {
 
-    vehicle.license.update(req,res,next,usersToSecurityContext);
+    vehicle.emirates.update(req,res,next,usersToSecurityContext);
 });
 
 
@@ -267,15 +267,15 @@ app.put('/blockchain/assets/vehicles/:v5cID/telephone' , function(req,res,next)
 //-----------------------------------------------------------------------------------------------
 //    Blockchain - Assets - Vehicles - Vehicle - Passport Number
 //-----------------------------------------------------------------------------------------------
-app.get('/blockchain/assets/vehicles/:v5cID/telephone' , function(req,res,next)
+app.get('/blockchain/assets/vehicles/:v5cID/passport' , function(req,res,next)
 {
-    vehicle.telephone.read(req,res,next,usersToSecurityContext);
+    vehicle.passport.read(req,res,next,usersToSecurityContext);
 });
 
-app.put('/blockchain/assets/vehicles/:v5cID/telephone' , function(req,res,next)
+app.put('/blockchain/assets/vehicles/:v5cID/passport' , function(req,res,next)
 {
 
-    vehicle.telephone.update(req,res,next,usersToSecurityContext);
+    vehicle.passport.update(req,res,next,usersToSecurityContext);
 });
 
 
