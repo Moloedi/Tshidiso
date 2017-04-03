@@ -61,7 +61,12 @@ type Vehicle struct {
 
 	Certificate		string `json:"certificate"`
 	Shipment		string `json:"shipment"`
+	//Owner information
 	License			string `json:"license"`
+	Emirates		string `json:"emirates"`
+	Passport		string `json:"passport"`
+	Telephone		string `json:"telephone"`
+	Addresses		string `json:"addresses"`
 }
 
 
@@ -267,6 +272,10 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function stri
 		} else if function == "update_reg" 			{ return t.update_registration(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "update_certificate" 	{ return t.update_certificate(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "update_license" 		{ return t.update_license(stub, v, caller, caller_affiliation, args[0])
+		} else if function == "update_emirates" 	{ return t.update_emirates(stub, v, caller, caller_affiliation, args[0])
+		} else if function == "update_passport"		{ return t.update_passport(stub, v, caller, caller_affiliation, args[0])
+		} else if function == "update_telephone"	{ return t.update_telephone(stub, v, caller, caller_affiliation, args[0])
+		} else if function == "update_addresses"	{ return t.update_addresses(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "update_shipment" 	{ return t.update_shipment(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "update_vin" 			{ return t.update_vin(stub, v, caller, caller_affiliation, args[0])
         } else if function == "update_colour" 		{ return t.update_colour(stub, v, caller, caller_affiliation, args[0])
@@ -336,10 +345,14 @@ func (t *SimpleChaincode) create_vehicle(stub shim.ChaincodeStubInterface, calle
 	certificate    := "\"Certificate\":\"UNDEFINED\", "
 	shipment	   := "\"Shipment\":\"UNDEFINED\", "
 	license		   := "\"License\":\"UNDEFINED\", "
+	emirates	   := "\"Emirates\":\"UNDEFINED\", "
+	passport	   := "\"Passport\":\"UNDEFINED\", "
+	telephone	   := "\"Telephone\":\"UNDEFINED\", "
+    addresses	   := "\"Addresses\":\"UNDEFINED\", "
 	status         := "\"Status\":0, "
 	scrapped       := "\"Scrapped\":false"
 
-	vehicle_json := "{"+v5c_ID+vin+make+model+reg+owner+colour+leaseContract+status+certificate+shipment+license+scrapped+"}" 	// Concatenates the variables to create the total JSON object
+	vehicle_json := "{"+v5c_ID+vin+make+model+reg+owner+colour+leaseContract+status+certificate+shipment+license+emirates+passport+telephone+addresses+scrapped+"}" 	// Concatenates the variables to create the total JSON object
 
 	matched, err := regexp.Match("^[A-z][A-z][0-9]{7}", []byte(v5cID))  				// matched = true if the v5cID passed fits format of two letters followed by seven digits
 
@@ -742,6 +755,112 @@ func (t *SimpleChaincode) update_license(stub shim.ChaincodeStubInterface, v Veh
 	_, err := t.save_changes(stub, v)
 
 															if err != nil { fmt.Printf("update_license: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }
+
+	return nil, nil
+
+}
+
+
+
+//=================================================================================================================================
+//	 update_emirates
+//=================================================================================================================================
+func (t *SimpleChaincode) update_emirates(stub shim.ChaincodeStubInterface, v Vehicle, caller string, caller_affiliation string, new_value string) ([]byte, error) {
+
+	if 		v.Status			== STATE_MANUFACTURE	&&
+			v.Owner				== caller				&&
+			caller_affiliation	== MANUFACTURER			&&
+			v.Scrapped			== false				{
+
+					v.Emirates = new_value
+
+	} else {
+        return nil, errors.New(fmt.Sprint("Permission denied. update_emirates %t %t %t" + v.Owner == caller, caller_affiliation == MANUFACTURER, v.Scrapped))
+
+	}
+
+	_, err := t.save_changes(stub, v)
+
+															if err != nil { fmt.Printf("update_emirates: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }
+
+	return nil, nil
+
+}
+
+
+
+//=================================================================================================================================
+//	 update_passport
+//=================================================================================================================================
+func (t *SimpleChaincode) update_passport(stub shim.ChaincodeStubInterface, v Vehicle, caller string, caller_affiliation string, new_value string) ([]byte, error) {
+
+	if 		v.Status			== STATE_MANUFACTURE	&&
+			v.Owner				== caller				&&
+			caller_affiliation	== MANUFACTURER			&&
+			v.Scrapped			== false				{
+
+					v.Passport = new_value
+
+	} else {
+        return nil, errors.New(fmt.Sprint("Permission denied. update_passport %t %t %t" + v.Owner == caller, caller_affiliation == MANUFACTURER, v.Scrapped))
+
+	}
+
+	_, err := t.save_changes(stub, v)
+
+															if err != nil { fmt.Printf("update_passport: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }
+
+	return nil, nil
+
+}
+
+
+//=================================================================================================================================
+//	 update_telephone
+//=================================================================================================================================
+func (t *SimpleChaincode) update_telephone(stub shim.ChaincodeStubInterface, v Vehicle, caller string, caller_affiliation string, new_value string) ([]byte, error) {
+
+	if 		v.Status			== STATE_MANUFACTURE	&&
+			v.Owner				== caller				&&
+			caller_affiliation	== MANUFACTURER			&&
+			v.Scrapped			== false				{
+
+					v.Telephone = new_value
+
+	} else {
+        return nil, errors.New(fmt.Sprint("Permission denied. update_telephone %t %t %t" + v.Owner == caller, caller_affiliation == MANUFACTURER, v.Scrapped))
+
+	}
+
+	_, err := t.save_changes(stub, v)
+
+															if err != nil { fmt.Printf("update_telephone: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }
+
+	return nil, nil
+
+}
+
+
+//=================================================================================================================================
+//	 update_addresses
+//=================================================================================================================================
+func (t *SimpleChaincode) update_addresses(stub shim.ChaincodeStubInterface, v Vehicle, caller string, caller_affiliation string, new_value string) ([]byte, error) {
+
+	if 		v.Status			== STATE_MANUFACTURE	&&
+			v.Owner				== caller				&&
+			caller_affiliation	== MANUFACTURER			&&
+			v.Scrapped			== false				{
+
+					v.Addresses = new_value
+
+	} else {
+        return nil, errors.New(fmt.Sprint("Permission denied. update_addresses %t %t %t" + v.Owner == caller, caller_affiliation == MANUFACTURER, v.Scrapped))
+
+	}
+
+	_, err := t.save_changes(stub, v)
+
+															if err != nil { fmt.Printf("update_addresses: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }
 
 	return nil, nil
 

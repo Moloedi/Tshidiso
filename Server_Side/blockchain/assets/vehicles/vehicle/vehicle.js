@@ -60,6 +60,29 @@ license.update = licFile.update;
 license.read = licFile.read;
 exports.license = license;
 
+var emirFile = require(__dirname+'/emirates/emirates.js');
+var emirates = {};
+emirates.update = emirFile.update;
+emirates.read = emirFile.read;
+exports.emirates = emirates;
+
+var passFile = require(__dirname+'/passport/passport.js');
+var passport = {};
+passport.update = passFile.update;
+passport.read = passFile.read;
+exports.passport = passport;
+
+var teleFile = require(__dirname+'/telephone/telephone.js');
+var telephone = {};
+telephone.update = teleFile.update;
+telephone.read = passFile.read;
+exports.telephone = telephone;
+
+var adrsFile = require(__dirname+'/addresses/addresses.js');
+var addresses = {};
+addresses.update = adrsFile.update;
+addresses.read = adrsFile.read;
+exports.addresses = addresses;
 
 var ownerFile = require(__dirname+'/owner/owner.js');
 var owner = {};

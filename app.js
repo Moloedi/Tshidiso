@@ -234,7 +234,65 @@ app.put('/blockchain/assets/vehicles/:v5cID/license' , function(req,res,next)
 });
 
 
+//-----------------------------------------------------------------------------------------------
+//    Blockchain - Assets - Vehicles - Vehicle - Emirates
+//-----------------------------------------------------------------------------------------------
+app.get('/blockchain/assets/vehicles/:v5cID/emirates' , function(req,res,next)
+{
+    vehicle.emirates.read(req,res,next,usersToSecurityContext);
+});
 
+app.put('/blockchain/assets/vehicles/:v5cID/emirates' , function(req,res,next)
+{
+
+    vehicle.license.update(req,res,next,usersToSecurityContext);
+});
+
+
+//-----------------------------------------------------------------------------------------------
+//    Blockchain - Assets - Vehicles - Vehicle - Telephone Number
+//-----------------------------------------------------------------------------------------------
+app.get('/blockchain/assets/vehicles/:v5cID/telephone' , function(req,res,next)
+{
+    vehicle.telephone.read(req,res,next,usersToSecurityContext);
+});
+
+app.put('/blockchain/assets/vehicles/:v5cID/telephone' , function(req,res,next)
+{
+
+    vehicle.telephone.update(req,res,next,usersToSecurityContext);
+});
+
+
+//-----------------------------------------------------------------------------------------------
+//    Blockchain - Assets - Vehicles - Vehicle - Passport Number
+//-----------------------------------------------------------------------------------------------
+app.get('/blockchain/assets/vehicles/:v5cID/telephone' , function(req,res,next)
+{
+    vehicle.telephone.read(req,res,next,usersToSecurityContext);
+});
+
+app.put('/blockchain/assets/vehicles/:v5cID/telephone' , function(req,res,next)
+{
+
+    vehicle.telephone.update(req,res,next,usersToSecurityContext);
+});
+
+
+
+//-----------------------------------------------------------------------------------------------
+//    Blockchain - Assets - Vehicles - Vehicle - Addresses
+//-----------------------------------------------------------------------------------------------
+app.get('/blockchain/assets/vehicles/:v5cID/addresses' , function(req,res,next)
+{
+    vehicle.addresses.read(req,res,next,usersToSecurityContext);
+});
+
+app.put('/blockchain/assets/vehicles/:v5cID/addresses' , function(req,res,next)
+{
+
+    vehicle.addresses.update(req,res,next,usersToSecurityContext);
+});
 
 //-----------------------------------------------------------------------------------------------
 //    Blockchain - Assets - Vehicles - Vehicle - Shipment

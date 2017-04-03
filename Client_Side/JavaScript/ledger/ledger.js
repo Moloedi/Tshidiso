@@ -229,6 +229,30 @@ function getTransactions(){
 						function_name = "update_license";
 						update_type = "License";
 					}
+					if(payload.indexOf("update_emirates") != -1)
+					{
+						type = "Update";
+						function_name = "update_emirates";
+						update_type = "Emirates";
+					}
+					if(payload.indexOf("update_passport") != -1)
+					{
+						type = "Update";
+						function_name = "update_passport";
+						update_type = "Passport";
+					}
+					if(payload.indexOf("update_telephone") != -1)
+					{
+						type = "Update";
+						function_name = "update_telephone";
+						update_type = "Telephone";
+					}
+					if(payload.indexOf("update_addresses") != -1)
+					{
+						type = "Update";
+						function_name = "update_addresses";
+						update_type = "Addresses";
+					}
 					if(payload.indexOf("scrap_vehicle") != -1)
 					{
 						type = "Scrap";
@@ -262,7 +286,11 @@ function getTransactions(){
 						var certificate = get_update("certificate",v5cID);
 						var shipment = get_update("shipment",v5cID);
 						var license = get_update("license",v5cID);
-						var carDetails = '['+vin+'] '+make+' '+model+', '+reg+', '+colour+', '+certificate+', '+shipment+', '+license
+						var emirates = get_update("emirates",v5cID);
+						var passport = get_update("passport",v5cID);
+						var telephone = get_update("telephone",v5cID);
+						var addresses = get_update("addresses",v5cID);
+						var carDetails = '['+vin+'] '+make+' '+model+', '+reg+', '+colour+', '+certificate+', '+shipment+', '+license+', '+emirates+', '+passport+', '+telephone+', '+addresses
 						
 						if(carDetails.indexOf('undefined') != -1)
 						{
