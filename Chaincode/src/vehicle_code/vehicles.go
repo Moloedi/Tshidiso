@@ -506,6 +506,14 @@ func (t *SimpleChaincode) private_to_private(stub shim.ChaincodeStubInterface, v
 //=================================================================================================================================
 func (t *SimpleChaincode) private_to_lease_company(stub shim.ChaincodeStubInterface, v Vehicle, caller string, caller_affiliation string, recipient_name string, recipient_affiliation string) ([]byte, error) {
 
+	if 		v.License	  == "UNDEFINED" ||
+			v.Emirates	  == "UNDEFINED" ||
+			v.Passport    == "UNDEFINED" ||
+			v.Telephone   == "UNDEFINED" ||
+			v.Addresses   == "UNDEFINED" {					//If any part of the car is undefined it has not bene fully manufacturered so cannot be sent
+															fmt.Printf("MANUFACTURER_TO_PRIVATE: Car not fully defined")
+															return nil, errors.New(fmt.Sprintf("Car not fully defined. %v", v))
+	}
 	if 		v.Status				== STATE_PRIVATE_OWNERSHIP	&&
 			v.Owner					== caller					&&
 			caller_affiliation		== PRIVATE_ENTITY			&&

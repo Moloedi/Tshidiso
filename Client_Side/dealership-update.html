@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 	<head>
-		<title>Manufacturer - Update Asset</title>
+		<title>Dealership - Update Asset</title>
 		<link rel="stylesheet" type="text/css" href="Style/main.css" ></link>
 		<link rel="stylesheet" type="text/css" href="Style/contractData.css" ></link>
 		<link rel="stylesheet" type="text/css" href="Style/manufacturer.css" ></link>
@@ -10,7 +10,7 @@
 		<script src="JavaScript/plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
 		<script src="JavaScript/plugins/jquery.mousewheel.js" type="text/javascript"></script>
 		<script src="JavaScript/config/config.js" type="text/javascript"></script>
-		<script>var pgNm = "Manufacturer"; var pgNmPlural = "manufacturers"; var sendDets = "Manufacturer: "+config.participants['manufacturer'].company;</script>
+		<script>var pgNm = "Dealership"; var pgNmPlural = "dealerships"; var sendDets = "Dealership: "+config.participants['dealership'].company;</script>
 		<script src="JavaScript/asset_functions/asset_interaction.js" type="text/javascript"></script>
 		<script src="JavaScript/asset_functions/asset_read.js" type="text/javascript"></script>
 		<script src="JavaScript/page_functions/update_page_functions.js" type="text/javascript"></script>
@@ -21,7 +21,7 @@
 	</head>
 	<body>
 		<div id="fade" style="display:block!important" ></div>
-		<div id="loader" style="display:block!important" ><img src="Images/Manufacturer/loading.gif" height="100" width="100" alt="loading" text="please wait..." /><br /><br /><span id="loaderMessages" style="color:#016059;">0 assets</span></div>
+		<div id="loader" style="display:block!important" ><img src="Images/Dealership/loading.gif" height="100" width="100" alt="loading" text="please wait..." /><br /><br /><span id="loaderMessages" style="color:#016059;">0 assets</span></div>
 		<table id="mainTbl" >
 			<tr>
 				<td class="smlBrk"></td>
@@ -41,7 +41,7 @@
 					<a href="index.html" >Home</a>
 				</td>
 				<td colspan="2" id="userStuff">
-					<div id="user" class="rtTxt" ><span id="userDets" ><span id="username" ></span> (<span id="userType">Customs</span>: <span id="company"></span>)</span>&nbsp;<span id="menuBtn" onclick="toggleMenu()" ><div class="menuBar" ></div><div class="menuBar" ></div><span id="userBlock" class="menuWhiteBlock"></span></span></div>
+					<div id="user" class="rtTxt" ><span id="userDets" ><span id="username" ></span> (<span id="userType">Dealership</span>: <span id="company"></span>)</span>&nbsp;<span id="menuBtn" onclick="toggleMenu()" ><div class="menuBar" ></div><div class="menuBar" ></div><span id="userBlock" class="menuWhiteBlock"></span></span></div>
 				</td>
 				<td class="smlBrk"></td>
 			</tr>
@@ -83,40 +83,40 @@
 				<td class="editRw greyOut">V5C</td><td colspan="2" class="editRw greyOut"><input readonly type="text" name="v5cID" id="v5cID" class="tblTxt greyOut" value="0" /><input type="hidden" id="hidV5cID" /></td>
 			</tr>
 			<tr>
-				<td class="editRw">CHASSIS#</td><td colspan="2" class="editRw"><input type="text" name="vin" id="vin" class="tblTxt" value="0" /><input type="hidden" id="hidVin" /></td>
+				<td class="editRw">CHASSIS#</td><td colspan="2" class="editRw greyOut"><input readonly type="text" name="vin" id="vin" class="tblTxt greyOut" value="0" /><input type="hidden" id="hidVin" /></td>
 			</tr>
 			<tr>
-				<td class="editRw">Make/Manufacturer</td><td colspan="2" class="editRw"><input type="text" name="make" id="make" class="tblTxt" value="undefined" /><input type="hidden" id="hidMake" /></td>
+				<td class="editRw">Make/Manufacturer</td><td colspan="2" class="editRw greyOut"><input readonly type="text" name="make" id="make" class="tblTxt greyOut" value="undefined" /><input type="hidden" id="hidMake" /></td>
 			</tr>
 			<tr>
-				<td class="editRw">Model</td><td colspan="2" class="editRw"><input type="text" name="model" id="model" class="tblTxt" value="undefined" /><input type="hidden" id="hidModel" /></td>
+				<td class="editRw">Model</td><td colspan="2" class="editRw greyOut"><input readonly type="text" name="model" id="model" class="tblTxt greyOut" value="undefined" /><input type="hidden" id="hidModel" /></td>
 			</tr>
 			<tr>
-				<td class="editRw">Colour</td><td colspan="2" class="editRw"><input type="text" name="colour" id="colour" class="tblTxt" value="undefined" /><input type="hidden" id="hidColour" /></td>
+				<td class="editRw">Colour</td><td colspan="2" class="editRw greyOut"><input readonly type="text" name="colour" id="colour" class="tblTxt greyOut" value="undefined" /><input type="hidden" id="hidColour" /></td>
 			</tr>
 			<tr>
-				<td class="editRw">Registration Date</td><td colspan="2" class="editRw"><input type="text" name="reg" id="reg" class="tblTxt" value="undefined" /><input type="hidden" id="hidReg" /></td>
+				<td class="editRw">Registration Date</td><td colspan="2" class="editRw greyOut"><input readonly type="text" name="reg" id="reg" class="tblTxt greyOut" value="undefined" /><input type="hidden" id="hidReg" /></td>
 			</tr>
 			<tr>
-				<td class="editRw">Vehicle Custom Certificate</td><td colspan="2" class="editRw"><input type="text" name="certificate" id="certificate" class="tblTxt" value="undefined" /><input type="hidden" id="hidCertificate" /></td>
+				<td class="editRw">Vehicle Custom Certificate</td><td colspan="2" class="editRw greyOut"><input readonly type="text" name="certificate" id="certificate" class="tblTxt greyOut" value="undefined" /><input type="hidden" id="hidCertificate" /></td>
 			</tr>
 			<tr>
-				<td class="editRw">Shipment Company</td><td colspan="2" class="editRw"><input type="text" name="shipment" id="shipment" class="tblTxt" value="undefined" /><input type="hidden" id="#hidShipment" /></td>
+				<td class="editRw">Shipment Company</td><td colspan="2" class="editRw greyOut"><input readonly type="text" name="shipment" id="shipment" class="tblTxt greyOut" value="undefined" /><input type="hidden" id="#hidShipment" /></td>
 			</tr>
 			<tr>
-				<td class="editRw">License Number</td><td colspan="2" class="editRw greyOut"><input readonly type="text" name="license" id="license" class="tblTxt greyOut" value="undefined" /><input type="hidden" id="#hidLicense" /></td>
+				<td class="editRw">License Number</td><td colspan="2" class="editRw"><input type="text" name="license" id="license" class="tblTxt" value="undefined" /><input type="hidden" id="#hidLicense" /></td>
 			</tr>
 			<tr>
-				<td class="editRw">Emirates ID</td><td colspan="2" class="editRw greyOut"><input readonly type="text" name="emirates" id="emirates" class="tblTxt greyOut" value="undefined" /><input type="hidden" id="#hidEmirates" /></td>
+				<td class="editRw">Emirates ID</td><td colspan="2" class="editRw"><input type="text" name="emirates" id="emirates" class="tblTxt" value="undefined" /><input type="hidden" id="#hidEmirates" /></td>
 			</tr>
 			<tr>
-				<td class="editRw">Passport Number</td><td colspan="2" class="editRw greyOut"><input readonly type="text" name="passport" id="passport" class="tblTxt greyOut" value="undefined" /><input type="hidden" id="#hidPassport" /></td>
+				<td class="editRw">Passport Number</td><td colspan="2" class="editRw"><input type="text" name="passport" id="passport" class="tblTxt" value="undefined" /><input type="hidden" id="#hidPassport" /></td>
 			</tr>
 			<tr>
-				<td class="editRw">Telephone Number</td><td colspan="2" class="editRw greyOut"><input readonly type="text" name="telephone" id="telephone" class="tblTxt greyOut" value="undefined" /><input type="hidden" id="#hidTelephone" /></td>
+				<td class="editRw">Telephone Number</td><td colspan="2" class="editRw"><input type="text" name="telephone" id="telephone" class="tblTxt" value="undefined" /><input type="hidden" id="#hidTelephone" /></td>
 			</tr>
 			<tr>
-				<td class="editRw">Addresses</td><td colspan="2" class="editRw greyOut"><input readonly type="text" name="addresses" id="addresses" class="tblTxt greyOut" value="undefined" /><input type="hidden" id="#hidAddresses" /></td>
+				<td class="editRw">Addresses</td><td colspan="2" class="editRw"><input type="text" name="addresses" id="addresses" class="tblTxt" value="undefined" /><input type="hidden" id="#hidAddresses" /></td>
 			</tr>
 			<tr>
 				<td colspan="3" id="errorRw"  >
@@ -124,7 +124,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="bxBtm" colspan="3"  id="chooseOptBtm"><img onclick="closeEditTbl()" src="Icons/Manufacturer/cancel.svg" class="lftBtn" id="cclOpt" width="15" height="15" /><img src="Icons/Manufacturer/tick.svg" onclick="validate(this)" class="rtBtn" id="doneOpt" width="20" height="15" /></td>
+				<td class="bxBtm" colspan="3"  id="chooseOptBtm"><img onclick="closeEditTbl()" src="Icons/Dealership/cancel.svg" class="lftBtn" id="cclOpt" width="15" height="15" /><img src="Icons/Dealership/tick.svg" onclick="validate(this)" class="rtBtn" id="doneOpt" width="20" height="15" /></td>
 			</tr>
 		</table>
 		<table id="confTbl" >
@@ -137,7 +137,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="bxBtm" id="chooseConfBtm"><img onclick="closeConf()" src="Icons/Manufacturer/tick.svg" class="rtBtn" id="doneConf" width="20" height="15" /></td>
+				<td class="bxBtm" id="chooseConfBtm"><img onclick="closeConf()" src="Icons/Dealership/tick.svg" class="rtBtn" id="doneConf" width="20" height="15" /></td>
 			</tr>
 		</table>
 		<table id="failTransfer" >
