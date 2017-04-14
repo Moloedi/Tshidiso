@@ -449,7 +449,6 @@ func (t *SimpleChaincode) manufacturer_to_private(stub shim.ChaincodeStubInterfa
 			v.Colour      == "UNDEFINED" ||
 			v.Certificate == "UNDEFINED" ||
 			v.Shipment    == "UNDEFINED" ||
-			v.License	  == "UNDEFINED" ||
 			v.VIN == 0				{					//If any part of the car is undefined it has not bene fully manufacturered so cannot be sent
 															fmt.Printf("MANUFACTURER_TO_PRIVATE: Car not fully defined")
 															return nil, errors.New(fmt.Sprintf("Car not fully defined. %v", v))
