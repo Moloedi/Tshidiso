@@ -747,15 +747,15 @@ func (t *SimpleChaincode) update_certificate(stub shim.ChaincodeStubInterface, v
 //=================================================================================================================================
 func (t *SimpleChaincode) update_license(stub shim.ChaincodeStubInterface, v Vehicle, caller string, caller_affiliation string, new_value string) ([]byte, error) {
 
-	if 		v.Status			== STATE_MANUFACTURE	&&
-			v.Owner				== caller				&&
-			caller_affiliation	== MANUFACTURER			&&
+	if 		v.Status			== STATE_PRIVATE_OWNERSHIP	&&
+			v.Owner				== caller					&&
+			caller_affiliation	== PRIVATE_ENTITY			&&
 			v.Scrapped			== false				{
 
 					v.License = new_value
 
 	} else {
-        return nil, errors.New(fmt.Sprint("Permission denied. update_license %t %t %t" + v.Owner == caller, caller_affiliation == MANUFACTURER, v.Scrapped))
+        return nil, errors.New(fmt.Sprint("Permission denied. update_license %t %t %t" + v.Owner == caller, caller_affiliation == PRIVATE_ENTITY, v.Scrapped))
 
 	}
 
@@ -774,15 +774,15 @@ func (t *SimpleChaincode) update_license(stub shim.ChaincodeStubInterface, v Veh
 //=================================================================================================================================
 func (t *SimpleChaincode) update_emirates(stub shim.ChaincodeStubInterface, v Vehicle, caller string, caller_affiliation string, new_value string) ([]byte, error) {
 
-	if 		v.Status			== STATE_MANUFACTURE	&&
+	if 		v.Status			== STATE_PRIVATE_OWNERSHIP	&&
 			v.Owner				== caller				&&
-			caller_affiliation	== MANUFACTURER			&&
+			caller_affiliation	== PRIVATE_ENTITY			&&
 			v.Scrapped			== false				{
 
 					v.Emirates = new_value
 
 	} else {
-        return nil, errors.New(fmt.Sprint("Permission denied. update_emirates %t %t %t" + v.Owner == caller, caller_affiliation == MANUFACTURER, v.Scrapped))
+        return nil, errors.New(fmt.Sprint("Permission denied. update_emirates %t %t %t" + v.Owner == caller, caller_affiliation == PRIVATE_ENTITY, v.Scrapped))
 
 	}
 
@@ -801,15 +801,15 @@ func (t *SimpleChaincode) update_emirates(stub shim.ChaincodeStubInterface, v Ve
 //=================================================================================================================================
 func (t *SimpleChaincode) update_passport(stub shim.ChaincodeStubInterface, v Vehicle, caller string, caller_affiliation string, new_value string) ([]byte, error) {
 
-	if 		v.Status			== STATE_MANUFACTURE	&&
+	if 		v.Status			== STATE_PRIVATE_OWNERSHIP	&&
 			v.Owner				== caller				&&
-			caller_affiliation	== MANUFACTURER			&&
+			caller_affiliation	== PRIVATE_ENTITY			&&
 			v.Scrapped			== false				{
 
 					v.Passport = new_value
 
 	} else {
-        return nil, errors.New(fmt.Sprint("Permission denied. update_passport %t %t %t" + v.Owner == caller, caller_affiliation == MANUFACTURER, v.Scrapped))
+        return nil, errors.New(fmt.Sprint("Permission denied. update_passport %t %t %t" + v.Owner == caller, caller_affiliation == PRIVATE_ENTITY, v.Scrapped))
 
 	}
 
@@ -827,15 +827,15 @@ func (t *SimpleChaincode) update_passport(stub shim.ChaincodeStubInterface, v Ve
 //=================================================================================================================================
 func (t *SimpleChaincode) update_telephone(stub shim.ChaincodeStubInterface, v Vehicle, caller string, caller_affiliation string, new_value string) ([]byte, error) {
 
-	if 		v.Status			== STATE_MANUFACTURE	&&
+	if 		v.Status			== STATE_PRIVATE_OWNERSHIP	&&
 			v.Owner				== caller				&&
-			caller_affiliation	== MANUFACTURER			&&
+			caller_affiliation	== PRIVATE_ENTITY			&&
 			v.Scrapped			== false				{
 
 					v.Telephone = new_value
 
 	} else {
-        return nil, errors.New(fmt.Sprint("Permission denied. update_telephone %t %t %t" + v.Owner == caller, caller_affiliation == MANUFACTURER, v.Scrapped))
+        return nil, errors.New(fmt.Sprint("Permission denied. update_telephone %t %t %t" + v.Owner == caller, caller_affiliation == PRIVATE_ENTITY, v.Scrapped))
 
 	}
 
@@ -853,15 +853,15 @@ func (t *SimpleChaincode) update_telephone(stub shim.ChaincodeStubInterface, v V
 //=================================================================================================================================
 func (t *SimpleChaincode) update_addresses(stub shim.ChaincodeStubInterface, v Vehicle, caller string, caller_affiliation string, new_value string) ([]byte, error) {
 
-	if 		v.Status			== STATE_MANUFACTURE	&&
+	if 		v.Status			== STATE_PRIVATE_OWNERSHIP	&&
 			v.Owner				== caller				&&
-			caller_affiliation	== MANUFACTURER			&&
+			caller_affiliation	== PRIVATE_ENTITY			&&
 			v.Scrapped			== false				{
 
 					v.Addresses = new_value
 
 	} else {
-        return nil, errors.New(fmt.Sprint("Permission denied. update_addresses %t %t %t" + v.Owner == caller, caller_affiliation == MANUFACTURER, v.Scrapped))
+        return nil, errors.New(fmt.Sprint("Permission denied. update_addresses %t %t %t" + v.Owner == caller, caller_affiliation == PRIVATE_ENTITY, v.Scrapped))
 
 	}
 
